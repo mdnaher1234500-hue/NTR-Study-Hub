@@ -1,64 +1,79 @@
-import Image from "next/image";
+const features = [
+  {
+    title: "Study Materials",
+    description: "Access notes, lesson plans, and resources in one simple place.",
+  },
+  {
+    title: "Practice Tests",
+    description: "Track progress with quizzes and mock exams built for steady improvement.",
+  },
+  {
+    title: "Student Support",
+    description: "Stay connected with guidance, updates, and helpful learning tools.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_40%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] text-slate-900">
+      <main className="mx-auto flex max-w-6xl flex-col px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
+        <section className="rounded-3xl border border-slate-200/80 bg-white/80 p-8 shadow-xl shadow-slate-200/60 backdrop-blur sm:p-12 lg:p-16">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="mb-4 inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700">
+                NTR Study Hub
+              </p>
+              <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
+                Learn better with a clean, modern student website.
+              </h1>
+              <p className="mt-5 text-lg leading-8 text-slate-600">
+                Create a simple digital space for lessons, progress, and support that feels welcoming for every student.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#features"
+                  className="rounded-full bg-slate-900 px-6 py-3 text-center font-semibold text-white transition hover:bg-slate-700"
+                >
+                  Explore Features
+                </a>
+                <a
+                  href="#about"
+                  className="rounded-full border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-slate-900 p-6 text-white shadow-lg lg:min-w-[320px]">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">
+                Today&apos;s Focus
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold">Stay organized and keep learning forward.</h2>
+              <ul className="mt-5 space-y-3 text-sm text-slate-300">
+                <li>• Structured study resources</li>
+                <li>• Helpful practice materials</li>
+                <li>• A professional online presence</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="mt-10 grid gap-6 md:grid-cols-3">
+          {features.map((feature) => (
+            <article key={feature.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{feature.description}</p>
+            </article>
+          ))}
+        </section>
+
+        <section id="about" className="mt-10 rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
+          <h2 className="text-2xl font-semibold text-slate-900">Built for students and learning communities</h2>
+          <p className="mt-3 max-w-3xl text-base leading-8 text-slate-600">
+            This website is now prepared as a clean, welcoming landing page for your study platform. You can expand it with courses, announcements, or more pages whenever you are ready.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
       </main>
     </div>
   );
