@@ -61,13 +61,13 @@ const TiltCard = ({ children, className = "" }: { children: React.ReactNode, cla
 
   return (
     <div
-      className={`preserve-3d relative group ${className}`}
+      className={`relative group ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={style}
     >
       <div className="hologram-reflection rounded-3xl"></div>
-      <div className="transform-style h-full w-full relative z-10">{children}</div>
+      <div className="h-full w-full relative z-10">{children}</div>
     </div>
   );
 };
