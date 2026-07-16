@@ -1196,7 +1196,7 @@ export default function AdminDashboard() {
                                     console.error("PDF INPUT REF IS NULL");
                                   }
                                 }}
-                                className="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 text-xs font-extrabold tracking-widest uppercase rounded-xl transition-all cursor-pointer inline-block shadow-[0_0_15px_rgba(79,70,229,0.4)] relative z-[101] pointer-events-auto select-none"
+                                className="px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white text-xs font-extrabold tracking-widest uppercase rounded-xl transition-all duration-300 cursor-pointer inline-block shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:shadow-[0_0_25px_rgba(79,70,229,0.7)] hover:-translate-y-1 hover:scale-105 hover:opacity-100 relative z-[101] pointer-events-auto select-none"
                               >
                                 Select File
                               </button>
