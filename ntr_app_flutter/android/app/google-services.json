@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "252600020571",
+    "project_id": "ntr-study-hub-4df5f",
+    "storage_bucket": "ntr-study-hub-4df5f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252600020571:android:79fa1dc22fca3d8df6597e",
+        "android_client_info": {
+          "package_name": "com.example.ntr_app_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8HDwYf1ruGXeXhueN-sN5Wn3VhnfkuEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

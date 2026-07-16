@@ -1,79 +1,152 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
+import { Sparkles, BookOpen, Target, Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
+
 const features = [
   {
     title: "Study Materials",
-    description: "Access notes, lesson plans, and resources in one simple place.",
+    description: "Access high-tier notes, lesson plans, and resources loaded instantly.",
+    icon: <BookOpen className="h-6 w-6 text-secondary" />
   },
   {
     title: "Practice Tests",
-    description: "Track progress with quizzes and mock exams built for steady improvement.",
+    description: "Track your stats with quizzes and mock exams built for competitive improvement.",
+    icon: <Target className="h-6 w-6 text-accent" />
   },
   {
     title: "Student Support",
-    description: "Stay connected with guidance, updates, and helpful learning tools.",
+    description: "Stay connected with your squad. Guidance and learning tools provided.",
+    icon: <Users className="h-6 w-6 text-primary" />
   },
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_40%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] text-slate-900">
-      <main className="mx-auto flex max-w-6xl flex-col px-6 py-16 sm:px-8 lg:px-10 lg:py-24">
-        <section className="rounded-3xl border border-slate-200/80 bg-white/80 p-8 shadow-xl shadow-slate-200/60 backdrop-blur sm:p-12 lg:p-16">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+    <div className="min-h-screen text-foreground overflow-hidden">
+      <main className="mx-auto flex max-w-7xl flex-col px-6 py-16 sm:px-8 lg:px-12 lg:py-24 relative z-10">
+        
+        {/* Floating Hero Section */}
+        <motion.section 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, type: "spring" }}
+          className="relative rounded-[2rem] glass-panel p-8 sm:p-12 lg:p-20 overflow-hidden"
+        >
+          {/* Animated glow orb behind text */}
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen animate-pulse" />
+
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between relative z-10">
             <div className="max-w-2xl">
-              <p className="mb-4 inline-flex rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-700">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-secondary/50 bg-secondary/10 px-4 py-1.5 text-xs font-black tracking-widest text-secondary shadow-[0_0_15px_rgba(6,182,212,0.3)] uppercase"
+              >
+                <Sparkles className="h-4 w-4" />
                 NTR Study Hub
-              </p>
-              <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-                Learn better with a clean, modern student website.
-              </h1>
-              <p className="mt-5 text-lg leading-8 text-slate-600">
-                Create a simple digital space for lessons, progress, and support that feels welcoming for every student.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
+              </motion.div>
+              
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-5xl font-black leading-[1.1] sm:text-6xl tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-200 to-gray-500 drop-shadow-lg"
+              >
+                ELEVATE YOUR <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">ACADEMIC PROTOCOL</span>
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-lg leading-8 text-gray-400 font-medium max-w-xl"
+              >
+                A high-performance digital space engineered for students. Initialize your learning modules, track progression, and access critical data resources instantly.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-10 flex flex-col gap-4 sm:flex-row"
+              >
+                <Link
+                  href="/courses"
+                  className="group relative flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-8 py-4 text-sm font-black uppercase tracking-widest text-white shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]"
+                >
+                  Initialize Curriculum
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <div className="absolute inset-0 rounded-xl border border-white/20"></div>
+                </Link>
+                <Link
                   href="#features"
-                  className="rounded-full bg-slate-900 px-6 py-3 text-center font-semibold text-white transition hover:bg-slate-700"
+                  className="group flex items-center justify-center rounded-xl border border-gray-600 bg-black/40 px-8 py-4 text-sm font-black uppercase tracking-widest text-gray-300 transition-all hover:border-gray-400 hover:bg-white/5 hover:text-white"
                 >
-                  Explore Features
-                </a>
-                <a
-                  href="#about"
-                  className="rounded-full border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                >
-                  Learn More
-                </a>
+                  View Details
+                </Link>
+              </motion.div>
+            </div>
+
+            <TiltCard maxTilt={15} className="lg:min-w-[380px]">
+              <div className="rounded-[2rem] bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-8 shadow-2xl relative overflow-hidden group">
+                {/* Glare effect */}
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 pointer-events-none transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%]" />
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-2 w-2 rounded-full bg-accent animate-ping"></div>
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-accent">
+                    System Active
+                  </p>
+                </div>
+                
+                <h2 className="text-2xl font-black tracking-tight text-white">Daily Objectives</h2>
+                <ul className="mt-6 space-y-4 text-sm font-semibold text-gray-400">
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded bg-primary/20 flex items-center justify-center border border-primary/50 text-primary">01</div>
+                    Acquire structured study resources
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded bg-secondary/20 flex items-center justify-center border border-secondary/50 text-secondary">02</div>
+                    Execute practice protocols
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded bg-accent/20 flex items-center justify-center border border-accent/50 text-accent">03</div>
+                    Maintain competitive edge
+                  </li>
+                </ul>
               </div>
-            </div>
-
-            <div className="rounded-2xl bg-slate-900 p-6 text-white shadow-lg lg:min-w-[320px]">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">
-                Today&apos;s Focus
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold">Stay organized and keep learning forward.</h2>
-              <ul className="mt-5 space-y-3 text-sm text-slate-300">
-                <li>• Structured study resources</li>
-                <li>• Helpful practice materials</li>
-                <li>• A professional online presence</li>
-              </ul>
-            </div>
+            </TiltCard>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="features" className="mt-10 grid gap-6 md:grid-cols-3">
-          {features.map((feature) => (
-            <article key={feature.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{feature.description}</p>
-            </article>
+        {/* Floating Features Grid */}
+        <section id="features" className="mt-16 grid gap-6 md:grid-cols-3 perspective-container">
+          {features.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.1, type: "spring" }}
+            >
+              <TiltCard maxTilt={10} glow={false}>
+                <article className="rounded-2xl glass-panel p-8 h-full transition-colors hover:bg-white/5 border border-white/10 hover:border-white/20">
+                  <div className="mb-4 inline-flex p-3 rounded-xl bg-black/40 border border-gray-800 shadow-inner">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-black tracking-tight text-white mb-3">{feature.title}</h3>
+                  <p className="text-sm font-medium leading-relaxed text-gray-400">{feature.description}</p>
+                </article>
+              </TiltCard>
+            </motion.div>
           ))}
         </section>
 
-        <section id="about" className="mt-10 rounded-2xl border border-slate-200 bg-white/70 p-8 shadow-sm">
-          <h2 className="text-2xl font-semibold text-slate-900">Built for students and learning communities</h2>
-          <p className="mt-3 max-w-3xl text-base leading-8 text-slate-600">
-            This website is now prepared as a clean, welcoming landing page for your study platform. You can expand it with courses, announcements, or more pages whenever you are ready.
-          </p>
-        </section>
       </main>
     </div>
   );

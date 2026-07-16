@@ -1,0 +1,80 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function adminExists() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function adminData() {
+      return get(/databases/$(database)/documents/admins/$(request.auth.uid)).data;
+    }
+
+    function isActiveAdmin() {
+      return adminExists()
+        && adminData().active == true
+        && (
+          adminData().role == 'super_admin'
+          || adminData().role == 'admin'
+          || adminData().role == 'editor'
+        );
+    }
+
+    function isSuperAdmin() {
+      return isActiveAdmin()
+        && adminData().role == 'super_admin';
+    }
+
+    function hasFacultyAccess(facultyId) {
+      return isSuperAdmin()
+        || (
+          isActiveAdmin()
+          && facultyId in adminData().faculties
+        );
+    }
+
+    match /admins/{uid} {
+      allow read: if signedIn()
+        && (
+          request.auth.uid == uid
+          || isSuperAdmin()
+        );
+
+      allow create, update, delete: if isSuperAdmin();
+    }
+
+    match /curriculum/{curriculumId} {
+      allow read: if true;
+
+      allow create, update, delete:
+        if hasFacultyAccess(curriculumId.split('-')[0]);
+    }
+
+    match /curriculum/{curriculumId}/{document=**} {
+      allow read: if true;
+
+      allow create, update, delete:
+        if hasFacultyAccess(curriculumId.split('-')[0]);
+    }
+
+    match /courses/{courseId} {
+      allow read: if true;
+
+      allow create, update, delete:
+        if hasFacultyAccess(courseId.split('-')[0]);
+    }
+
+    match /courses/{courseId}/{document=**} {
+      allow read: if true;
+
+      allow create, update, delete:
+        if hasFacultyAccess(courseId.split('-')[0]);
+    }
+  }
+}
