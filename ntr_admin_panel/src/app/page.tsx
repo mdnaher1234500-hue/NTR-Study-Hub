@@ -239,8 +239,9 @@ export default function AdminDashboard() {
       }
 
       // Merge local proxy overrides if present
+      const studentAppUrl = process.env.NEXT_PUBLIC_STUDENT_APP_URL || "http://localhost:3002";
       try {
-        const res = await fetch("http://localhost:3002/api/sync-curriculum");
+        const res = await fetch(`${studentAppUrl}/api/sync-curriculum`);
         if (res.ok) {
           const syncData = await res.json();
           if (syncData.subjects && syncData.subjects.length > 0) {
@@ -267,8 +268,9 @@ export default function AdminDashboard() {
       let mergedList = getSubjectsForSemester(selectedDegree.id, selectedSemester);
 
       // Merge local proxy overrides
+      const studentAppUrlFallback = process.env.NEXT_PUBLIC_STUDENT_APP_URL || "http://localhost:3002";
       try {
-        const res = await fetch("http://localhost:3002/api/sync-curriculum");
+        const res = await fetch(`${studentAppUrlFallback}/api/sync-curriculum`);
         if (res.ok) {
           const syncData = await res.json();
           if (syncData.subjects && syncData.subjects.length > 0) {
@@ -294,17 +296,18 @@ export default function AdminDashboard() {
     return () => unsubscribe();
   }, [selectedDegree, selectedSemester]);
 
-  // Post local curriculum updates to Student Portal endpoint (CORS bypass for localhost same-machine showcase)
+  // Post curriculum updates to Student Portal endpoint (uses NEXT_PUBLIC_STUDENT_APP_URL in production)
   const syncToStudentPortal = async (updatedList: Subject[]) => {
+    const studentAppUrl = process.env.NEXT_PUBLIC_STUDENT_APP_URL || "http://localhost:3002";
     try {
-      await fetch("http://localhost:3002/api/sync-curriculum", {
+      await fetch(`${studentAppUrl}/api/sync-curriculum`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ subjects: updatedList })
       });
-      console.log("Locally synced curriculum update with student portal.");
+      console.log("Synced curriculum update with student portal.");
     } catch (err) {
       console.warn("Failed to sync directly to student portal: ", err);
     }

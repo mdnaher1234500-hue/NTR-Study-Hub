@@ -2,8 +2,10 @@ import { NextResponse } from "next/server";
 
 let subjectsCache: any[] = [];
 
+const allowedOrigin = process.env.NEXT_PUBLIC_ADMIN_APP_URL || "*";
+
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "http://localhost:3010",
+  "Access-Control-Allow-Origin": allowedOrigin,
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
 };

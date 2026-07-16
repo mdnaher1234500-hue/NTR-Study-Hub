@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { initializeFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyApL_VqIdpvYVpmUsNtLIVD6rC_fNr5zFY",
-  authDomain: "ntr-study-hub-4df5f.firebaseapp.com",
-  projectId: "ntr-study-hub-4df5f",
-  storageBucket: "ntr-study-hub-4df5f.firebasestorage.app",
-  messagingSenderId: "252600020571",
-  appId: "1:252600020571:web:7b49c6b7ea7941fdf6597e"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyApL_VqIdpvYVpmUsNtLIVD6rC_fNr5zFY",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "ntr-study-hub-4df5f.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "ntr-study-hub-4df5f",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "ntr-study-hub-4df5f.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "252600020571",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:252600020571:web:7b49c6b7ea7941fdf6597e",
 };
 
 // Initialize Firebase
